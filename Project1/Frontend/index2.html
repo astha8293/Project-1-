@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Login</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/indexlogin2.js"></script>
+    <style>
+        html {
+  background-color: #56baed;
+  background-image: url('/login.png');
+  height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+    </style>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="inactive underlineHover" onclick="signclick()"> Employee </h2>
+          <h2 class="active" >Manager </h2>
+      
+          <!-- Icon -->
+          <!---<div class="fadeIn first">
+            <img src="images/manager.png" id="icon" alt="User Icon" />
+          </div> ---->
+      
+          <!-- Login Form -->
+          <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="password" id="pwd" class="fadeIn third" name="password" placeholder="password">
+            <button type="button" class="button" onclick="demo()">Log in</button>
+          </form>
+      
+          <!-- Remind Passowrd -->
+         
+        </div>
+      </div>
+      <!-- <script>
+          function signclick(){
+              window.location.replace("index.html");
+          }
+          function demo(){
+            var un1 = document.getElementById('login').value;
+            var ps1 = document.getElementById('pwd').value;
+            var des = "emp";
+            var obj1 = {email:un1,password:ps1,designation:des};
+            fetch("http://localhost:8080/expReimbursement/webapi/index/adlogin",{
+                body: JSON.stringify(obj1),
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                method:"POST"
+            })
+            .then((response)=>response.json())
+            .then((json)=>disp(json))
+            .catch(err=>console.log('Request failed'));
+            function disp(res){
+                if(res.status === "true"){
+                    window.location.href = "dashadmin/dashindex.html";
+                }
+                else{
+                    alert("incorrect password");
+                }
+            }
+        }
+      </script> -->
+</body>
+</html>

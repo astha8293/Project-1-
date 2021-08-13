@@ -1,0 +1,215 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Completed Requests</title>
+    <script src="js/tables.js"></script>
+    <script src="js/fetchingcounts.js"></script>
+    <script src="js/compreq.js"></script>
+    <script>
+            dashload();
+            allreq();
+        
+    </script>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"></div>
+            <div class="list-group list-group-flush my-3">
+                <a href="dashindex.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Dashboard</a>
+                <a href="dashsubmitrequest.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">Send a Request</a>
+                <a href="pendingreq.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">View pending Requests</a>
+                <a href="completedreq.html" class="list-group-item list-group-item-action bg-transparent second-text active">View completed Requests</a>
+                <a href="deniedreq.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">>View denied Requests</a>
+                <a href="../index.html" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+                
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                           
+                            <script>
+                                var firstname1 = sessionStorage.getItem("firstname");
+                                var lastname1 = sessionStorage.getItem("lastname");
+                                document.getElementById('navbarDropdown').innerHTML = firstname1+" "+lastname1;
+                                
+                               
+                            </script>
+                          
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--- <div class="container-fluid px-4">
+                <div class="row g-3 my-2">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2" id="treq">9999</h3>
+                                <p class="fs-5">Total Requests</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" onclick="rdr1()">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2" id="sreq">4920</h3>
+                                <p class="fs-5">Completed Requests</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <script>
+                        function rdr1(){
+                            window.location.href = "completedreq.html";
+                        }
+                    </script>
+
+                    <div class="col-md-3" onclick="rdr2()">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2" id="preq">3899</h3>
+                                <p class="fs-5">Pending Requests</p>
+                            </div>
+                            <i class="fas fa-spinner fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <script>
+                        function rdr2(){
+                            window.location.href = "pendingreq.html";
+                        }
+                    </script>
+                     <div class="col-md-3" onclick="rdr3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-2" id = "dreq">%25</h3>
+                                <p class="fs-5">Denied Reqests</p>
+                            </div>
+                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <script>
+                        function rdr3(){
+                            window.location.href = "deniedreq.html";
+                        }
+                    </script>
+                </div> --->
+                        <!-- <div>
+                            <h1 onclick="allreq()">this is completed Requests</h1>
+                        </div> -->
+
+                        <!-- <div class="col-md-3">
+                            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                                <div>
+                                    <h3 class="fs-2">%25</h3>
+                                    <p class="fs-5">Increase</p>
+                                </div>
+                                <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            </div>
+                        </div>
+                    </div> -->
+
+                <div class="row my-5">
+                    <h1 class="" style="text-align: center;">Completed Requests</h1>
+                    <div class="col" id="all-requests">
+                        <button  type="button"  align-text = "center" onclick="allreq()" style="margin-left:600px"  >Click here </button>
+                        <!-- <table id = "table" class="table bg-white rounded shadow-sm  table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50">S.no</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                            </thead>
+                           
+        
+                        </table> -->
+                        <!-- <script>
+                            function allreq(){
+    fetch('http://localhost:8080/expReimbursement/webapi/employee/gettable')
+    .then((response)=>response.json())
+    .then((json)=>displayProfile(json))
+    .catch(err=>console.log('Request failed'));
+    function displayProfile(response)
+     {
+        
+        console.log(response);
+      //  var req=new Date(d1.dob).toLocaleDateString("en-US");
+        let output='';
+              output=`<br><br><center><table class="table bg-white rounded shadow-sm  table-hover">
+                  <thead><tr>
+              <th scope="col" width="100" style="text-align: center;">Req No.</th>
+              <th scope="col" style="text-align: center;">Name</th>
+              <th scope="col" style="text-align: center;">Amount</th>
+          
+            </thead><tbody>`;
+              for(var d1 of response){
+                  if(d1.statusOfReq == "sucess"){
+                                
+                     output+=`<tr>
+                              
+                              <td style="padding-top: 20px; text-align: center;">${d1.reqid}</td>              
+                              <td style="padding-top: 20px; text-align: center;">${d1.reason}</td>
+                              <td style="padding-top: 20px; text-align: center;">${d1.amount}</td>
+                              
+                          
+                          </tr>`;
+                        }
+              }
+                          output+=`
+                          </tbody></table></center>`;
+              document.getElementById("all-requests").innerHTML=output;
+          }    
+          function update(){
+              window.location.href="http://localhost:8080/Employee/MprofileUpdate.html";       
+          }
+      }
+                        </script> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+</body>
+
+</html>
